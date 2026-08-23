@@ -1,0 +1,78 @@
+{
+  "enabled": true,
+  "currentGeneration": 2,
+  "adminBypassPermissionLevel": 4,
+  "adminBypassRequiresCreative": true,
+  "naturalSpawns": {
+    "enabled": true,
+    "allowGenerationOne": false,
+    "cumulativeFromGenerationTwo": true,
+    "gateRegionalFormsByDebutGeneration": true,
+    "blockLockedSourceSpawns": true
+  },
+  "acquisition": {
+    "blockLockedCaptures": true,
+    "blockLockedEvolutions": true,
+    "blockLockedEggResults": true,
+    "blockLockedRaidRewards": true,
+    "blockLockedStarters": true,
+    "blockLockedFossilRevival": true,
+    "blockKantoNpcPokemonRewards": true,
+    "allowExistingOwnedLockedPokemon": true,
+    "allowPlayerTrades": true,
+    "allowExternalTransfers": true,
+    "blockLockedCobbleSafariIncubatorResults": true,
+    "blockKantoNpcPokemonShopRewards": true,
+    "blockKantoNpcPokemonTrades": true,
+    "blockCobblemonQuestsGivePokemonRewards": true,
+    "blockRadGymsPokemonRewards": true
+  },
+  "tmTrGate": {
+    "enabled": true,
+    "gateByMoveDebutGeneration": true,
+    "allowNaturalLevelUpMovesFromAnyGeneration": true,
+    "unknownMovePolicy": "ALLOW_AND_LOG"
+  },
+  "gimmicks": {
+    "megaUnlockGeneration": 6,
+    "zMovesUnlockGeneration": 7,
+    "ultraBurstUnlockGeneration": 7,
+    "dynamaxUnlockGeneration": 8,
+    "terastallizationUnlockGeneration": 9
+  },
+  "services": {
+    "disableCobbleSafariGts": true,
+    "disableCobbleSafariWonderTrade": true
+  },
+  "pokeSnacks": {
+    "balanceLegendaryAndMythicalSpawns": true,
+    "maxLegendaryMythicalRarityTier": 1
+  },
+  "performance": {
+    "overrideAutosaveInterval": true,
+    "autosaveIntervalMinutes": 15,
+    "deferFabricWaystonesImmediateSave": true,
+    "saveDiagnostics": true,
+    "slowSaveWarningMs": 200,
+    "savedDataTopEntries": 5
+  },
+  "speciesExceptions": [],
+  "formExceptions": [],
+  "sourceExceptions": [],
+  "messages": {
+    "captureLocked": "Este Pokémon ainda não está liberado no Survival (requer Geração %d).",
+    "evolutionLocked": "Esta evolução ainda não está liberada no Survival (requer Geração %d).",
+    "eggLocked": "Este ovo resultaria em conteúdo ainda não liberado (requer Geração %d).",
+    "tmLocked": "Este golpe por TM/TR ainda não está liberado (requer Geração %d).",
+    "raidRewardLocked": "A recompensa Pokémon desta raid ainda não está liberada (requer Geração %d).",
+    "starterLocked": "Este inicial ainda não está liberado no Survival (requer Geração %d).",
+    "fossilLocked": "Este fóssil resultaria em um Pokémon ainda não liberado (requer Geração %d).",
+    "npcRewardLocked": "Este Pokémon de recompensa ainda não está liberado (requer Geração %d).",
+    "serviceDisabled": "Este serviço está temporariamente indisponível no CobbleKanto Survival.",
+    "incubatorLocked": "O resultado deste incubador ainda pode gerar conteúdo bloqueado nesta fase do Survival.",
+    "questRewardLocked": "Esta recompensa Pokémon de quest ainda não está liberada (requer Geração %d).",
+    "gymRewardLocked": "Esta recompensa Pokémon de ginásio ainda não está liberada (requer Geração %d).",
+    "sourceSpawnLocked": "Este encontro ainda não está liberado no Survival (requer Geração %d)."
+  },
+  "debugLogging": false
+}

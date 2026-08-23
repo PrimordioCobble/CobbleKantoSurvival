@@ -1,0 +1,51 @@
+{
+  "source": "Cobblemon 1.7.3 MoveTemplate.num (canonical Showdown move numbering; audited runtime field has no debut-generation property)",
+  "policy": "Gen-I moves remain manually teachable; unknown/custom move policy is config-driven.",
+  "ranges": [
+    {
+      "min": 1,
+      "max": 165,
+      "generation": 1
+    },
+    {
+      "min": 166,
+      "max": 251,
+      "generation": 2
+    },
+    {
+      "min": 252,
+      "max": 354,
+      "generation": 3
+    },
+    {
+      "min": 355,
+      "max": 467,
+      "generation": 4
+    },
+    {
+      "min": 468,
+      "max": 559,
+      "generation": 5
+    },
+    {
+      "min": 560,
+      "max": 621,
+      "generation": 6
+    },
+    {
+      "min": 622,
+      "max": 742,
+      "generation": 7
+    },
+    {
+      "min": 743,
+      "max": 850,
+      "generation": 8
+    },
+    {
+      "min": 851,
+      "max": 2147483647,
+      "generation": 9
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblekantosurvival",
+  "version": "${version}",
+  "name": "CobbleKantoSurvival",
+  "description": "Server-side generation progression gate for CobbleKanto Survival.",
+  "authors": [
+    "CobbleKanto"
+  ],
+  "license": "ARR",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "net.crulim.cobblekantosurvival.CobbleKantoSurvival"
+    ]
+  },
+  "mixins": [
+    "cobblekantosurvival.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": ">=0.116.6+1.21.1",
+    "cobblemon": "1.7.3+1.21.1"
+  },
+  "suggests": {
+    "mega_showdown": "*",
+    "cobblesafari": "*",
+    "simpletms": "*",
+    "tmcraft": "*",
+    "cobbreeding": "*",
+    "cobblemonraiddens": "*",
+    "cobblemontrialsedition": "*",
+    "cobblemon_quests": "*",
+    "rad_gyms": "*"
+  }
+}

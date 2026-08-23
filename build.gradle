@@ -1,0 +1,135 @@
+plugins {
+    id 'java'
+    id 'dev.architectury.loom' version '1.13-SNAPSHOT'
+    id 'architectury-plugin' version '3.4-SNAPSHOT'
+    id 'org.jetbrains.kotlin.jvm' version '2.2.20'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+loom {
+    silentMojangMappingsLicense()
+}
+
+repositories {
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroup("software.bernie.geckolib")
+        }
+    }
+    mavenCentral()
+    maven { url = 'https://artefacts.cobblemon.com/releases/' }
+    maven { url = 'https://maven.architectury.dev/' }
+    maven { url = 'https://maven.teamresourceful.com/repository/maven-public/' }
+    maven { url = 'https://maven.impactdev.net/repository/development/' }
+
+    // Required by Accessories and its Fabric dependencies.
+    // Also provides Cloth Config used by Cobbreeding.
+    maven { url = 'https://maven.wispforest.io/releases/' }
+    maven { url = 'https://maven.su5ed.dev/releases/' }
+    maven { url = 'https://maven.fabricmc.net/' }
+    maven { url = 'https://maven.shedaniel.me/' }
+    maven {
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup('maven.modrinth')
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_language_kotlin_version}"
+
+    // Runtime DEV dependency required by SimpleTMs 2.3.3
+    // and also the exact Architectury line used by Cobbreeding 2.2.2.
+    modImplementation "dev.architectury:architectury-fabric:13.0.8"
+
+    // Required runtime dependency for Cobblemon Raid Dens.
+    modImplementation "software.bernie.geckolib:geckolib-fabric-1.21.1:4.8.3"
+
+    // Runtime DEV dependency required by Mega Showdown 1.9.2 hotfix.
+    modImplementation "io.wispforest:accessories-fabric:1.1.0-beta.52+1.21.1"
+
+    // Runtime DEV dependency required by Cobbreeding 2.2.2.
+    modImplementation "me.shedaniel.cloth:cloth-config-fabric:15.0.140"
+
+    modCompileOnly("com.cobblemon:mod:${project.cobblemon_version}") {
+        transitive = false
+    }
+    modImplementation "com.cobblemon:fabric:${project.cobblemon_version}"
+
+    // Active runtime integrations already validated / currently under test.
+    modImplementation files('libs/reference/Cobbreeding-fabric-2.2.2.jar')
+    modImplementation files('libs/reference/mega_showdown-fabric-1.9.2+1.7.3+1.21.1-hotfix.jar')
+    modImplementation files('libs/reference/SimpleTMs-fabric-2.3.3.jar')
+    modImplementation files('libs/reference/tmcraft-1.4.18+1.7.3.jar')
+
+    // CobbleSafari is the current runtime DEV phase.
+    modImplementation files('libs/reference/cobblesafari-fabric-1.21.1-0.3.2-NO-LIVING-DATATRACKER-TESTONLY.jar')
+
+    // Raid Dens is the current runtime DEV phase.
+    modImplementation files('libs/reference/cobblemonraiddens-fabric-0.11.3+1.21.1-NO-MEGA-MIXINS-TESTONLY.jar')
+
+    // Trials is the current runtime DEV phase.
+    modImplementation files('libs/reference/CobblemonTrialsEdition-fabric-1.3.1.jar')
+
+    // Cobblemon Quests is not planned for production; keep compile-only.
+    modCompileOnly files('libs/reference/cobblemon_quests-[1.21.1]-fabric-1.2.0.jar')
+
+    // Rad Gyms 0.4.4 runtime DEV phase.
+    modImplementation files('libs/reference/rad-gyms-fabric-0.4.4.jar')
+
+    // Required by Rad Gyms 0.4.4: Radical Cobblemon Trainers API 0.14.6-beta (Fabric 1.21.1).
+    modImplementation "maven.modrinth:CBfM2yw7:XRYb3brF"
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'UTF-8'
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+}
+
+publishing {
+    publications {
+        create('mavenJava', MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+}

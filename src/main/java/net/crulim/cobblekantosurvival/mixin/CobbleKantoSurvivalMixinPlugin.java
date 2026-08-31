@@ -24,12 +24,14 @@ public final class CobbleKantoSurvivalMixinPlugin implements IMixinConfigPlugin 
         else if (mixinClassName.contains(".cobblemonquests.")) id = "cobblemon_quests";
         else if (mixinClassName.contains(".radgyms.")) id = "rad_gyms";
         else if (mixinClassName.contains(".fwaystones.")) id = "fwaystones";
+        else if (mixinClassName.contains(".cobblemoncards.")) id = "cobblemon-cards";
         if (id == null) return true;
         if (!FabricLoader.getInstance().isModLoaded(id)) return false;
         if (!CompatibilityVersions.exactAuditedVersion(id)) {
             System.err.println("[CobbleKantoSurvival] Skipping optional mixin " + mixinClassName
-                + " because " + id + " version is " + CompatibilityVersions.installed(id)
-                + " but audited version is " + CompatibilityVersions.expected(id));
+                + " because " + id + " failed its audited compatibility check"
+                + " (installed metadata version=" + CompatibilityVersions.installed(id)
+                + ", expected=" + CompatibilityVersions.expected(id) + ")");
             return false;
         }
         return true;

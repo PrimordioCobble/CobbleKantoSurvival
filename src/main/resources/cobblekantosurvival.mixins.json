@@ -18,7 +18,8 @@
     "raiddens.RaidDensRewardPreviewMixin",
     "cobblemonquests.CobblemonQuestsGivePokemonMixin",
     "radgyms.RadGymsPokemonRewardMixin",
-    "radgyms.RadGymsPokeCacheMixin"
+    "radgyms.RadGymsPokeCacheMixin",
+    "cobblemoncards.CobblemonCardsBinderSpawnModifierMixin"
   ],
   "injectors": {
     "defaultRequire": 1
